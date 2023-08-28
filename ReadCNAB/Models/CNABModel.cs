@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 
 namespace ReadCNAB.Models
@@ -7,7 +8,7 @@ namespace ReadCNAB.Models
     {
         [Key]
         public int Id { get; set; }
-        public TranModel TranType { get; set; }
+        public int TranType { get; set; }
         public DateOnly Date { get; set; }
         public double Value { get; set; }
         public long CPF { get; set; }
