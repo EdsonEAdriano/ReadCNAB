@@ -12,6 +12,11 @@ namespace ReadCNAB.Repository.Transaction
             _con = con;
         }
 
+        public List<TranModel> Get()
+        {
+            return _con.Transaction.ToList();
+        }
+
         public TranModel getByTran(int id)
         {
             return _con.Transaction.FirstOrDefault(t => t.TranType == id);
