@@ -48,7 +48,7 @@ namespace ReadCNAB.Controllers
                     }
                 }
 
-                return Ok("Arquivo salvo com sucesso.");
+                return Ok("Transações salvas com sucesso!");
             }
             catch (Exception e)
             {
@@ -61,7 +61,7 @@ namespace ReadCNAB.Controllers
 
         private CNABModel ParseCNABRecord(string line)
         {
-            TranModel tranType = _tranRepository.getByTran(int.Parse(line.Substring(0, 1)));
+            int tranType = int.Parse(line.Substring(0, 1));
 
             // Get date
             string year = line.Substring(1, 4);
@@ -100,10 +100,18 @@ namespace ReadCNAB.Controllers
             return record;
         }
 
-        [HttpGet]
+        [HttpGet("GetTransaction")]
         public IActionResult GetTransaction()
         {
             var transactions = _cnabRepository.Get();
+
+            return Ok(transactions);
+        }
+
+        [HttpGet("GetTranTypes")]
+        public IActionResult GetTranTypes()
+        {
+            var transactions = _tranRepository.Get();
 
             return Ok(transactions);
         }
