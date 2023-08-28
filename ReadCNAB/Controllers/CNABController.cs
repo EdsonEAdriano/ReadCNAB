@@ -27,6 +27,11 @@ namespace ReadCNAB.Controllers
                 return BadRequest("Nenhum arquivo foi enviado.");
             }
 
+            if (!Path.GetFileName(file.FileName).Contains(".txt"))
+            {
+                return BadRequest("Arquivo não permitido.");
+            }
+
             try
             {
 
